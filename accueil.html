@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="lib.js"></script>
+  <script src="local.js"></script>
+  <script src="http://connect.facebook.net/fr_FR/all.js"></script>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({ appId: 1696235890620110, cookie: true, xfbml: true, oauth: true });
+      facebook_is_connected(function(){get_facebook_likes()});
+  };
+
+  </script>
+</head>
+<body>
+  <div id="fb-root"></div>
+
+
+  <button type="button" name="button" id="facebook_button" onclick="facebook_connection({scope: 'user_likes'}, get_facebook_likes());">Connexion Facebook</button>
+
+</body>
+</html>
