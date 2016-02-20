@@ -32,17 +32,8 @@ CREATE TABLE `connect_users_likes` (
   KEY `fk_connect_users_likes_2_idx` (`id_connect_likes`),
   CONSTRAINT `fk_connect_users_likes_1` FOREIGN KEY (`id_connect_users`) REFERENCES `users` (`id_users`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_connect_users_likes_2` FOREIGN KEY (`id_connect_likes`) REFERENCES `likes` (`id_likes`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `connect_users_likes`
---
-
-LOCK TABLES `connect_users_likes` WRITE;
-/*!40000 ALTER TABLE `connect_users_likes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `connect_users_likes` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `likes`
@@ -56,17 +47,8 @@ CREATE TABLE `likes` (
   `titlelikes` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id_likes`),
   UNIQUE KEY `id_likes_UNIQUE` (`id_likes`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `likes`
---
-
-LOCK TABLES `likes` WRITE;
-/*!40000 ALTER TABLE `likes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `likes` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -78,19 +60,17 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id_users` int(11) NOT NULL AUTO_INCREMENT,
   `name_users` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `fb_id_users` varchar(45) COLLATE utf8_bin NOT NULL,
+  `bio_users` varchar(1000) COLLATE utf8_bin DEFAULT NULL,
+  `birthday_users` date DEFAULT NULL,
+  `gender_users` binary(1) DEFAULT NULL,
+  `location_users` varchar(250) COLLATE utf8_bin DEFAULT NULL,
+  `relation_users` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `interested_users` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id_users`),
   UNIQUE KEY `id_utilisateurs_UNIQUE` (`id_users`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -101,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-20 17:43:06
+-- Dump completed on 2016-02-20 23:16:42
