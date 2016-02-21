@@ -24,12 +24,8 @@ function get_user_info(id){
 
   post_from_server("get_user_data.php", true, "id=" + id, function(xhr){
     var aux=xhr.responseText;
-    console.log(aux);
     var partsArray = aux.split('<||>');
 
-    console.log("ALL  "+partsArray);
-
-    //here I am
     document.getElementById('nom').value=partsArray[1];
     document.getElementById('datepicker').value=partsArray[3];
 
@@ -52,11 +48,7 @@ function get_user_info(id){
      //document.getElementById('h').checked=false;
      //document.getElementById('f').checked=false;
 
-     console.log("h "+document.getElementById('h').checked);
-
      var sexArray = (partsArray[7]+", ,").split(',');
-
-     console.log("h sexArray "+sexArray);
 
      if(sexArray[0]=="male" || sexArray[1]=="male"){
         document.getElementById('h').checked=true;
@@ -64,16 +56,12 @@ function get_user_info(id){
      else{
      document.getElementById('h').checked=false;
      }
-     console.log("h after "+document.getElementById('h').checked);
-
-     console.log("f "+document.getElementById('f').checked);
      if(sexArray[0]=="female" || sexArray[1]=="female"){
         document.getElementById('f').checked=true;
      }
      else{
         document.getElementById('f').checked=false;
      }
-     console.log("f after "+document.getElementById('f').checked);
      if(partsArray[6]=="Single"){
         document.getElementById('situation').value="celib";
      }
@@ -104,7 +92,6 @@ function maj(id){
      }
 
     var rel = document.getElementById('situation').value;
-    console.log("situation biz = "+rel);
 
     var int="";
     if(document.getElementById('f').checked){
@@ -114,8 +101,6 @@ function maj(id){
     }
     else if(document.getElementById('h').checked)
         int+="male";
-
-    console.log("int = "+int);
 
     rel="";
     if(document.getElementById('situation').value=="marie"){
