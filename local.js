@@ -6,6 +6,19 @@ function change_name(id, inner){
 //   document.getElementById(id).onclick = func;
 // }
 
+function random_photo(max, Class, id, tab){
+    var num = Math.floor(Math.random()*(max)+1);
+    
+    while(tab.indexOf(num) != -1){
+        num = Math.floor(Math.random()*(max)+1);
+    }
+     var img = "<img src=\"photos/"+num+".jpg\" class=\"" + Class + "\" alt=\"Photo de couple\" />";
+     var html = document.getElementById(id).innerHTML;
+     document.getElementById(id).innerHTML = Class == 'left' ? img + html : html + img;
+    return num;
+}
+
+
 function send_likes(id){
   get_facebook_likes(function(data){
     var send = "id=" + id;

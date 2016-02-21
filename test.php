@@ -121,33 +121,6 @@ class Connection{
    
       
      
-  /*
-    $bdd='';
-    try
-    {
-         //    $bdd = new PDO('mysql :host='.$server.:3306';dbname='.$db.'', $user, $mdp);   
-         $bdd = new PDO('mysql:host=localhost;dbname=FirstDate_base', 'root', 'go93han');
-    }
-        catch (Exception $e)
-    {
-        die('Erreur ICI : ' . $e->getMessage());
-
-    }
-    echo "Connected successfully";
-
-
-$s=$bdd->query('SELECT COUNT(*) as nb FROM likes');
-if ($s!=NULL){
-    $rc=$s->rowCount();
-    echo $rc.' rows selected:NIGGA11';
-}
-else{
-    echo "balot";
-    }
-echo "fini";
-$reponse->closeCursor(); // Termine le traitement de la requête
-
-*/ 
 ?>
 </body>
 </html> 

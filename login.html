@@ -13,6 +13,7 @@
   };
 
   </script>
+
   <meta charset="utf-8">
   <title>Welcome to FirstDate</title>
 
@@ -20,22 +21,17 @@
   </script>
 </head>
 <body>
+
 <div id="fb-root"></div>
+
 <div id="all">
     <div id="row1">
-    <img src="photos/1.jpg" class="left" alt="Photo de couple" />
-    <img src="photos/5.jpg" class="center" alt="Photo de couple" />
-        <img src="photos/6.jpg" class="right" alt="Photo de couple" />
     </div>
     <div id="row2">
-    <img src="photos/2.jpg" class="left" alt="Photo de couple" />
     <a type="button" name="button" class="center" id="facebook_button" href="javascript:facebook_connection({scope: 'user_likes,user_about_me,user_birthday,user_relationships,user_work_history,user_location,user_relationship_details,user_photos'}, function(){send_profile(function(id){send_likes(id); send_photos(id);})});">Connexion Facebook</a>
-   <img src="photos/3.jpg" class="right" alt="Photo de couple" />
+ 
      </div>
    <div id="row3">
-            <img src="photos/7.jpg" class="left" alt="Photo de couple" />
-        <img src="photos/4.jpg" class="center" alt="Photo de couple" />
-            <img src="photos/8.jpg" class="right" alt="Photo de couple" />
     </div>
 
 </div>
@@ -44,6 +40,16 @@
 
 
 
-
+  <script>
+    var tab = [];
+    tab.push(random_photo(16, 'left', "row1", tab));
+    tab.push(random_photo(16, 'center', "row1", tab));
+    tab.push(random_photo(16, 'right', "row1", tab));
+    tab.push(random_photo(16, 'left', "row2", tab));
+    tab.push(random_photo(16, 'right', "row2", tab));
+    tab.push(random_photo(16, 'left', "row3", tab));
+    tab.push(random_photo(16, 'center', "row3", tab));
+    random_photo(16, 'right', "row3", tab);  
+  </script>
 </body>
 </html>
