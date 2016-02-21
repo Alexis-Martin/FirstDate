@@ -7,6 +7,5 @@
   $base = new Connection('localhost', 'FirstDate_base', 'root', 'irahebbdlms');
 
   $query  = "UPDATE users SET photo_users=" . $base->getBDD()->quote($url) . " WHERE id_fb_users=" . $base->getBDD()->quote($id);
-  echo $query;
   $base->query($query);
 ?>
