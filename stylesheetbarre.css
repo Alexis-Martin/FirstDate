@@ -1,0 +1,38 @@
+
+#nav
+{
+   margin:0;
+   padding:0;
+}
+
+#nav li
+{
+   display:inline;
+   padding:0;
+   margin:0;
+}
+
+
+#nav a:link, #nav a:visited
+{
+   color:#000;
+   background:#b2b580;
+}
+
+
+#nav a:link, #nav a:visited
+{
+   color:#000;
+   background:#b2b580;
+   padding:20px 40px 4px 10px;
+}
+
+
+#nav a:link, #nav a:visited
+{
+   color:#000;
+   background:#b2b580;
+   padding:20px 40px 4px 10px;
+   float:left;
+   width:auto;
+}
