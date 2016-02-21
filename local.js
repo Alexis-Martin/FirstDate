@@ -21,7 +21,7 @@ function random_photo(max, Class, id, tab){
 
 function get_user_info(id){
   console.log("eeee");
-  
+
   post_from_server("get_user_data.php", true, "id=" + id, function(xhr){
     var aux=xhr.responseText;
     console.log(aux);
@@ -40,11 +40,11 @@ function get_user_info(id){
       //console.log("Apres New test2 "+document.getElementById('text').value);// prbl!!
 
     document.getElementById('city').value=partsArray[5];
-    if(partsArray[4]=="h"){
+    if(partsArray[4]=="male"){
         document.getElementById('homme').checked=true;
         document.getElementById('femme').checked=false;
      }
-     else if(partsArray[4]=="f"){
+     else if(partsArray[4]=="female"){
         document.getElementById('homme').checked=false;
         document.getElementById('femme').checked=true;
      }
@@ -97,10 +97,10 @@ function maj(id){
 
     var gen="";
     if(document.getElementById('homme').checked){
-        gen="h";
+        gen="male";
         }
       else if(document.getElementById('femme').checked){
-        gen="f";
+        gen="female";
      }
 
     var rel = document.getElementById('situation').value;
@@ -192,6 +192,7 @@ function get_matches(id){
   post_from_server("get_matches.php", true, "id=" + id, function(xhr){
 
     var rep = xhr.responseText;
+    console.log(rep);
     var row = rep.split("<!!>");
     complete_text(row);
   });
@@ -201,6 +202,7 @@ function complete_text(row){
     document.getElementById('all').innerHTML = "";
     for(var i = 0; i < row.length-1; i++){
       document.getElementById('all').innerHTML += "<div id=\"row" + i + "\" class=\"rows\">";
+
       var infos = row[i].split("|/|");
       if(infos[0] == 'female'){
         document.getElementById('row' + i).style = "background:lightpink;";
