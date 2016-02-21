@@ -1,15 +1,13 @@
 <?php
 
 require 'Connection.php';
-require 'conf.php';
 
 class Modification{
-
       private $_id;
       private $_conn;
 
   public function __construct($id){
-    $this->_conn=new Connection($server, $base, $user, $mdp);
+    $this->_conn=new Connection('localhost', 'FirstDate_base', 'root', 'go93han');
     $this->_id=$this->_conn->getBDD()->quote($id);
     }
 

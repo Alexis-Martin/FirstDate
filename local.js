@@ -20,8 +20,11 @@ function random_photo(max, Class, id, tab){
 
 
 function get_user_info(id){
+  console.log("eeee");
+  
   post_from_server("get_user_data.php", true, "id=" + id, function(xhr){
     var aux=xhr.responseText;
+    console.log(aux);
     var partsArray = aux.split('<||>');
 
     console.log("ALL  "+partsArray);
@@ -31,7 +34,7 @@ function get_user_info(id){
     document.getElementById('datepicker').value=partsArray[3];
 
     //console.log("Avant New test2 "+document.getElementById('text').value);// prbl!!
-    document.getElementById('text').value=partsArray[2]=="undefined"?"Comment décririez-vous ? Quels sont vos hobby ?":partsArray[2];
+    document.getElementById('text').value=partsArray[2]=="undefined"?"Comment décrireriez-vous ? Quels sont vos hobby ?":partsArray[2];
 
 
       //console.log("Apres New test2 "+document.getElementById('text').value);// prbl!!

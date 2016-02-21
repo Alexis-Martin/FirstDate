@@ -1,9 +1,10 @@
 <?php
 
 require 'Modification.php';
+
 $i=$_POST['id'];
 
-  //echo "ALLLO ".$i." la";
+  // echo "ALLLO ".$i." la";
   $test= new Modification($i);
 
   $req=$test->get_all();
