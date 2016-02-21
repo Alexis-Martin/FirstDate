@@ -70,7 +70,93 @@ function send_photos(id){
 
 function get_matches(id){
   post_from_server("get_matches.php", true, "id=" + id, function(xhr){
-    console.log(xhr.responseText);
-    console.log(document.getElementById('all'));
+
+    var rep = xhr.responseText;
+    var row = rep.split("<!!>");
+    complete_text(row);
   });
+}
+
+function complete_text(row){
+    document.getElementById('all').innerHTML = "";
+    for(var i = 0; i < row.length-1; i++){
+      document.getElementById('all').innerHTML += "<div id=\"row" + i + "\" class=\"rows\">";
+      var infos = row[i].split("|/|");
+      if(infos[0] == 'female'){
+        document.getElementById('row' + i).style = "background:lightpink;";
+      }
+      else if (infos[0] == 'male') {
+        document.getElementById('row' + i).style = "background:lightblue;";
+      }
+      else{
+        document.getElementById('row' + i).style = "background:lightgrey;";
+      }
+      document.getElementById('row' + i).innerHTML += "<div id=\"photo" + i +"\" class=\"photo\">";
+      if(infos[1] != ''){
+        document.getElementById('photo' + i).innerHTML += "<img src=\"" + infos[1] + "\"/>";
+      }
+      document.getElementById('row' + i).innerHTML += "</div>";
+
+
+      if(infos.length >= 10 && infos[9] != '' && infos[9] != 'undefined'){
+        document.getElementById('row' + i).innerHTML += "<p class=\"match\">" + infos[9] + "</p>";
+      }
+
+      document.getElementById('row' + i).innerHTML += "<div id=\"infos" + i +"\"  class=\"infos\">";
+
+      document.getElementById('infos' + i).innerHTML += "<div id=\"head" + i +"\"  class=\"head\">";
+
+      if(infos[2] != ''){
+        document.getElementById('head' + i).innerHTML += "<span class=\"name\">" + infos[2] + "</span>";
+      }
+
+      //if(infos[3] != '0000-00-00'){
+        document.getElementById('head' + i).innerHTML += "<span>" + infos[3] + "<span>";
+      //}
+
+      document.getElementById('infos' + i).innerHTML += "</div>";
+
+      document.getElementById('infos' + i).innerHTML += "<div id=\"bio" + i +"\" class=\"bio\">";
+      if(infos[4] != 'undefined'){
+        document.getElementById('bio' + i).innerHTML += "<p>" + infos[4] + "</p>";
+      }
+      document.getElementById('infos' + i).innerHTML += "</div>";
+
+      document.getElementById('infos' + i).innerHTML += "<div id=\"foot" + i +"\" class=\"foot\">";
+      if(infos[5] != ''){
+        document.getElementById('foot' + i).innerHTML += "<span class=\"city\">vit à " + infos[5] + "</span>";
+      }
+
+      if(infos[6] != 'undefined'){
+        document.getElementById('foot' + i).innerHTML += "<span class=\"research\">recherche : " + infos[6] + "</span>";
+      }
+      if(infos[7] != ''){
+        document.getElementById('foot' + i).innerHTML += "<span class=\"relation\">est actuellement : " + infos[7] + "</span>";
+      }
+      document.getElementById('foot' + i).innerHTML += "<br/><span class=\"fb_page\"> <a href=\"https://www.facebook.com/" + infos[8] + "\">voir sa page</a></span>";
+
+      document.getElementById('foot' + i).innerHTML += "<button class=\"send_mess\" onclick=\"javascript:FB.ui({app_id:'1696235890620110', method: 'send', to:'" + infos[8] + "', link: 'https://www.facebook.com/" + infos[8] + "',});\">envoyer message</button>";
+
+
+      document.getElementById('infos' + i).innerHTML += "</div>";
+
+      document.getElementById('row' + i).innerHTML += "</div>";
+    }
+}
+
+function send_research(){
+  console.log(document.getElementById('search_name').value);
+  var send = "name=" + document.getElementById('search_name').value;
+  if(send != 'name=' && send != 'recherche'){
+    post_from_server("research_name.php", true, send, function(xhr){
+
+      var rep = xhr.responseText;
+      console.log(rep);
+      var row = rep.split("<!!>");
+      complete_text(row);
+    });
+  }
+  else{
+    get_id(function(id){get_matches(id);});
+  }
 }

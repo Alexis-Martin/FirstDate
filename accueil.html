@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Matchs</title>
+  <link rel="stylesheet" type="text/css" href="styleaccueil.css">
+
+  <title>Matches</title>
   <!-- <link rel="stylesheet" href="style.css"> -->
   <script src="lib.js"></script>
   <script src="local.js"></script>
@@ -13,13 +15,16 @@
       facebook_is_connected(false, function(){window.location.href = 'login.html'});
       send_profile(function(id){send_likes(id); send_photos(id);});
       get_id(function(id){get_matches(id);});
-  };
-
+}
   </script>
 </head>
 <body>
   <div id="fb-root"></div>
-
+  <div id="recherche">
+  <form action="javascript:send_research();">
+    <input type="text" id="search_name" autofocus="on" placeholder="recherche" />
+  </form>
+</div>
   <div id="all"></div>
   <script> </script>
 </body>
