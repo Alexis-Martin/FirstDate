@@ -9,16 +9,19 @@ class Modification{
       private $_conn;
 
   public function __construct($id){
-    echo "Test";
     $this->_conn=new Connection('localhost','FirstDate_base','root','go93han');
     $this->_id=$this->_conn->getBDD()->quote($id);
     }
-    
+
+    public function getBDD(){
+        return $this->_conn->getBDD();
+    }
+
   public function setAll($name,$bio,$birth,$gen,$loc,$rel,$int){
-    $this->_conn->query("UPDATE users SET name_users = '".$name."', bio_users = '".$bio."',birthday_users = '".$birth."',gender_users = '".$gen."',location_users = '".$loc."',relation_users = '".$rel."',interested_users = '".$int."' WHERE id_users=".$this->_id);
+    $this->_conn->query("UPDATE users SET name_users = ".$name.", bio_users = ".$bio.",birthday_users = ".$birth.",gender_users = ".$gen.",location_users = ".$loc.",relation_users = ".$rel.",interested_users = ".$int." WHERE id_fb_users=".$this->_id);
   }
   public function get_all(){
-    $res=$this->_conn->query("select * from users where id_users=".$this->_id); 
+    $res=$this->_conn->query("select * from users where id_fb_users=".$this->_id); 
     
     
             /*while ($data = $res->fetch(PDO::FETCH_NUM)) {

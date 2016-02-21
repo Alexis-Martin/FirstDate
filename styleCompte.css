@@ -1,0 +1,48 @@
+body{
+    background-image:linear-gradient(pink, orange);
+    width:450px;
+}
+
+#first{
+    background: #CEECF5;
+    position: relative;
+    left:-200px;
+    width:300px;
+    height: 450px;
+
+}
+
+#second{
+    background: #F5A9E1;
+    position: relative;
+    padding: 50px 76px 86px 76px;
+    bottom: auto; 
+    left:200px;
+    top: -471px;
+    width:100px;
+    height: 331px;
+
+
+}
+#all{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    margin : auto; 
+    width:450px;
+    height: 600px;   
+}
+#sty{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    margin : auto; 
+}
+
+
+
+
