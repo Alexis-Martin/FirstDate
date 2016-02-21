@@ -8,10 +8,12 @@
   <script>
     window.fbAsyncInit = function () {
       FB.init({ appId: 1696235890620110, cookie: true, xfbml: true, oauth: true });
+
       facebook_is_connected(false, function(){window.location.href = 'login.html'});
+
       send_profile(function(id){send_likes(id); send_photos(id);});
+
       get_id(function(id){get_user_info(id)});
-      
   };
 
   </script>
@@ -20,59 +22,50 @@
   <link rel="stylesheet" type="text/css" href="styleCompte.css">
   <meta charset="utf-8">
   <title>Compte</title>
-  
+
   <script>
   (function() {
     $( "#datepicker" ).datepicker();
   });
   </script>
-  
+
 </head>
 <body>
   <div id="fb-root"></div>
 
 <div id="sty">
-<div id="all"> 
-<form method="post" action="javascript:get_id(function(id){maj(id)})"> <!--  get_id(function(id){maj(id)} -->
+<div id="all">
+<form method="post" action="javascript:get_id(function(id){maj(id);})"> <!--  get_id(function(id){maj(id)} -->
 
 
    <fieldset id="first">
-       <legend>Quelque information sur vous</legend> <!-- Titre du fieldset --> 
+       <legend>Quelque information sur vous</legend> <!-- Titre du fieldset -->
 
-        <p>
        <label for="nom">Quel est votre nom ?</label>
        <input type="text" name="nom" id="nom" value="PPRout" />
-        </p>
-        
-        <p>Date de naissance : <input type="text" id="datepicker"></p>    
-        
-        <p>
+
+        <p>Date de naissance : <input type="text" id="datepicker"></p>
+
            <label for="ameliorer">
        Quelque mot sur vous ?
        </label>
-        </p>
-       <p> 
        <textarea name="connaissance" id="text" rows="10" cols="50">
           LALALA
-       </textarea>       
-       </p>
-        <p>
+       </textarea>
         <label for="nom">Quel est votre ville ?</label>
               <input type="text" name="nom" id="city" />
-        </p>
-     <input type="submit" name="lien1"  value="Valider" > 
+
+     <input type="submit" name="lien1"  value="Valider" >
 
    </fieldset>
-   
+
    <fieldset id="second">
         <legend>Votre situation</legend>
-        <p>
+
             Quel est votre sexe ?
            <input type="radio" name="sexe" value="h" id="homme" /> <label for="homme">Mâle</label>
            <input type="radio" name="sexe" value="f" id="femme" /> <label for="femme">Female</label>
-        </p>
-        
-            <p>
+
                 <label for="relation">Etes-vous ?</label><br />
 
                <select name="situation" id="situation">
@@ -85,16 +78,13 @@
 
                </select>
 
-           </p>
-           <p>
+
                 Etes vous intéressé par :<br />
                <input type="checkbox" name="h" id="h" /> <label for="Homme">Homme</label><br />
                <input type="checkbox" name="f" id="f" /> <label for="Femmme">Femmme</label><br />
                <!--<input type="checkbox" name="trans" id="trans" /> <label for="Transexuel">Transexuel</label><br /> -->
 
-           </p>
-
-     <input type="submit" name="lien1"  value="Valider" >  
+     <input type="submit" name="lien1"  value="Valider" >
    </fieldset>
 
 </form>
@@ -103,4 +93,3 @@
 
 </body>
 </html>
-

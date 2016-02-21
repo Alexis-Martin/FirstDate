@@ -29,7 +29,8 @@ function get_user_info(id){
     document.getElementById('datepicker').value=partsArray[3];
 
     console.log("Avant New test2 "+document.getElementById('text').innerHTML);// prbl!!
-    document.getElementById('text').innerHTML=partsArray[2]=="undefined"?"Comment décririez-vous ? Quels sont vos hobby ?":partsArray[2];
+    console.log(partsArray[2]);
+    document.getElementById('text').innerHTML= (partsArray[2]=="undefined" || partsArray[2]=='') ? "Comment décririez-vous ? Quels sont vos hobby ?":partsArray[2];
 
     console.log("Apres New test2 "+document.getElementById('text').innerHTML);// prbl!!
 
@@ -74,20 +75,11 @@ function get_user_info(id){
 }
 function maj(id){
     var name= document.getElementById('nom').value;
-    var date= document.getElementById('datepicker').value
+    var date= document.getElementById('datepicker').value;
 
-
-    console.log("Avant inner New test2 "+document.getElementById('text').innerHTML);
-    console.log("Avant New test2 "+document.getElementById('text').html);
-
-    var text= document.getElementById('text').innerHTML;
-
-    console.log("Apres inner New test2 "+document.getElementById('text').innerHTML);
-    console.log("Apres New test2 "+document.getElementById('text').html);
+    var text= document.getElementById('text').value;
 
     var city= document.getElementById('city').value;
-    //var bio = document.getElementById('text').value;
-    //var birth= document.getElementById().value;
     var gen="";
     if(document.getElementById('homme').checked){
         gen="h";
@@ -109,9 +101,9 @@ function maj(id){
 
 
     var send= "id="+id+"&name="+name+ "&date="+date+"&text="+text+"&city="+city+"&gen="+gen+"&rel="+rel+"&int="+int;
-    console.log("ICICIC77 "+send);
-    //var res="update users set name_users ='"+name+"', bio_users='"+text+"',birthday_users="+date+" where id_fb_users="10207795536022976";//, gender_users=' ', location_users=' ', relation_users=' ', interested_users where id_users="+1;
-    post_from_server("update_compte.php", true, send);
+    post_from_server("update_compte.php", true, send, function(){
+      alert("Changement pris en compte.");
+    });
 
 }
 function send_likes(id){
