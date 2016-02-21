@@ -1,0 +1,91 @@
+body{
+  background-color: black;
+  font-weight: bold;
+}
+
+form{
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: darkblue;
+}
+
+#search_name{
+  margin-left: 50px;
+  height: 25px;
+}
+
+.rows{
+  position:relative;
+  margin:auto;
+  height:210px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.photo{
+  position:relative;
+    float:left;
+    top:5px;
+    left:5px;
+}
+
+.infos{
+  position:relative;
+  left:20px;
+
+}
+
+.match{
+  position:relative;
+  float:right;
+  font-size: 50px;
+  margin-right: 30px;
+}
+.name{
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.city, .research, .relation{
+  margin-right: 20px;
+  background-color: #F5F5F5;
+
+}
+
+.lien{
+  position:relative;
+  float:left;
+}
+
+.bio{
+  height:115px;
+   overflow:auto ;
+   font-weight: normal;
+}
+
+
+.send_mess{
+  margin-left: 10px;
+  height:40px;
+  margin-top: 10px;
+  color: white;
+  font-size: 14px;
+  background-color: #0000CD;
+  font-weight: bold;
+
+}
+
+.fb_page{
+  margin-top: 10px;
+  margin-left: 10px;
+  border-style:outset;
+  border-width: thin;
+  padding:11px;
+  font-size: 14px;
+  background-color: #0000CD;
+}
+a{
+  color: white;
+  font-style: normal;
+  text-decoration: none;
+}
