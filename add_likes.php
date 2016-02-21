@@ -1,5 +1,6 @@
 <?php
   require 'Connection.php';
+  require 'conf.php';
 
   $id      = $_POST['id'];
   $idlikes = $_POST['idlike'];
@@ -7,7 +8,7 @@
   $name    = explode("<||>", $names);
   $idlike  = explode("<||>", $idlikes);
 
-  $base = new Connection('localhost', 'FirstDate_base', 'root', 'irahebbdlms');
+  $base = new Connection($server, $base, $user, $mdp);
 
   //INSERT INTO table (id, name, age) VALUES(1, "A", 19) ON DUPLICATE KEY UPDATE name="A", age=19
 

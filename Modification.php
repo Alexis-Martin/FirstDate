@@ -1,7 +1,7 @@
 <?php
 
 require 'Connection.php';
-
+require 'conf.php';
 
 class Modification{
 
@@ -9,7 +9,7 @@ class Modification{
       private $_conn;
 
   public function __construct($id){
-    $this->_conn=new Connection('localhost','FirstDate_base','root','irahebbdlms');
+    $this->_conn=new Connection($server, $base, $user, $mdp);
     $this->_id=$this->_conn->getBDD()->quote($id);
     }
 

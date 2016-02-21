@@ -7,8 +7,8 @@
 <body>
 <p> bla </p>
 <?php
-      
-   
+require 'conf.php';
+
 class Connection{
 
       private $bdd;
@@ -22,7 +22,7 @@ class Connection{
     $this->_dbname = $db;
     $this->_user = $user;
     $this->_mdp = $mdp;
-    try{    
+    try{
         $this->bdd = new PDO('mysql:host='.$h.';dbname='.$db, $user, $mdp);
     }
     catch (Exception $e)
@@ -32,7 +32,7 @@ class Connection{
   }
   public function getBDD(){
     return $this->bdd;
-  } 
+  }
   public function gethost(){
     return $this->$_host;
   }
@@ -42,7 +42,7 @@ class Connection{
   public function getuser(){
     return $this->$_user;
   }
-  public function query($req){ 
+  public function query($req){
     $res= $this->getBDD()->query($req);
     //$res= $this->getBDD()->prepare($req);
     //$res->execute();
@@ -55,16 +55,16 @@ class Connection{
         }
     }
    public function printReq($res,$type){
-   
+
         if($res!=NULL){
                 while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
                     print_r ($data);
-                    echo $data[$type]."<br>"; 
+                    echo $data[$type]."<br>";
                 }
         }
    }
    public function count($res){
-        
+
         if($res==NULL){
             return 0;
         }
@@ -79,48 +79,48 @@ class Connection{
         //$tab[];
         //$tab1[];
         $tab=array();
-       
+
         for ($numero = 0; $numero < $nbr; $numero++){
             $data=$req->fetch(PDO::FETCH_ASSOC)['nb'];
             //echo $nbr." et ".$data." et ".$numero."  a";
             $req1=$this->query("SELECT count(*) as value FROM connect_users_likes AS aa inner join connect_users_likes as bb on aa.id_connect_likes=bb.id_connect_likes and aa.id_connect_users=".$data." and bb.id_connect_users=".$id);
             $res=$req1->fetch(PDO::FETCH_ASSOC)['value'];
-            //echo "Le id n°".$id." a ".$res." centre d'interet avec le id n°".$data."<br>";         
+            //echo "Le id n°".$id." a ".$res." centre d'interet avec le id n°".$data."<br>";
             $tab[$data] = $res;
-            
+
         }
        //echo print_r($tab);
        arsort($tab);
         return $tab;
-    }   
-} 
+    }
+}
     //phpinfo();
-    $test1= new Connection('localhost','FirstDate_base','root','go93han');
+    $test1= new Connection($server, $base, $user, $mdp);
     //$pp=$test1->query('SELECT COUNT(*) as nb FROM likes');
     //$pp=$test1->query('SELECT * FROM likes');
     //echo $test1->count($pp)."<br><hr/>";
     $pp=$test1->query('SELECT COUNT(*) FROM likes');
     $test1->printReq($pp,'COUNT(*)');
-    echo "<br/>";  
+    echo "<br/>";
     echo $test1->count($pp)."<br/><hr/>";
-    
+
     echo "FINI, MOUAIS <br><hr>";
-    
-    
+
+
     $idA=1;$idB=2;
-    
-    
+
+
     $requetType="SELECT count(*) as value FROM connect_users_likes AS aa inner join      connect_users_likes as bb on aa.id_connect_likes=bb.id_connect_likes and aa.id_connect_users=1 and bb.id_connect_users=2";
     $pp=$test1->query($requetType);
     $test1->printReq($pp,'value');
     echo $test1->count($pp)." est le nombre de ligne<br><hr>";
-    
+
     $tab=$test1->match(1);
     print_r($tab);
     echo "<br><hr>".$requetType."<br><hr>";
-   
-      
-     
+
+
+
 ?>
 </body>
-</html> 
+</html>

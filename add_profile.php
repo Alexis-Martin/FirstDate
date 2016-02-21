@@ -1,8 +1,9 @@
 <?php
   require 'Connection.php';
+  require 'conf.php';
   $keys = array_keys($_POST);
 
-  $base = new Connection('localhost', 'FirstDate_base', 'root', 'irahebbdlms');
+  $base = new Connection($server, $base, $user, $mdp);
 
   $query = "INSERT IGNORE INTO users (";
   for ($i=0; $i < count($keys); $i++) {

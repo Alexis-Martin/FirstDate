@@ -1,9 +1,9 @@
 <?php
 
   require "Connection.php";
+  require 'conf.php';
 
-
-  $base = new Connection('localhost', 'FirstDate_base', 'root', 'irahebbdlms');
+  $base = new Connection($server, $base, $user, $mdp);
   $req = $base->match($base->getBDD()->quote($_POST['id']));
   $rep = "";
   $keys =  array_keys($req);
