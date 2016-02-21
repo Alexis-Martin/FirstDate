@@ -1,5 +1,5 @@
 function facebook_is_connected(ontrue, onfalse){
-  //alert('facebook_is_connected start');
+  //console.log('facebook_is_connected start');
 
   FB.getLoginStatus(function(response) {
     if(response.status === 'connected'){
@@ -130,16 +130,10 @@ function get_facebook_photos(onsuccess, onerror){
 }
 
 function get_id(callback){
-  console.log("get_id start");
+  //console.log("get_id start");
   facebook_is_connected(function(){
-    FB.api(
-    '/me/',
-    'GET',
-    {},
-    function(response) {
-      console.log('iii');
+    FB.api('/me/', function(response) {
       if (response && !response.error) {
-        console.log(response.id);
         if(callback){
           callback(response.id);
         }

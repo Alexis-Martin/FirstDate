@@ -8,7 +8,7 @@ function change_name(id, inner){
 
 function random_photo(max, Class, id, tab){
     var num = Math.floor(Math.random()*(max)+1);
-    
+
     while(tab.indexOf(num) != -1){
         num = Math.floor(Math.random()*(max)+1);
     }
@@ -71,5 +71,6 @@ function send_photos(id){
 function get_matches(id){
   post_from_server("get_matches.php", true, "id=" + id, function(xhr){
     console.log(xhr.responseText);
+    console.log(document.getElementById('all'));
   });
 }
