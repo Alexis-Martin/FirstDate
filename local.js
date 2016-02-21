@@ -24,14 +24,16 @@ function get_user_info(id){
     var aux=xhr.responseText;
     var partsArray = aux.split('<||>');
 
+    console.log("ALL  "+partsArray);
+
     //here I am
     document.getElementById('nom').value=partsArray[1];
     document.getElementById('datepicker').value=partsArray[3];
 
-    console.log("Avant New test2 "+document.getElementById('text').innerHTML);// prbl!!
-    document.getElementById('text').innerHTML=partsArray[2]=="undefined"?"Comment décririez-vous ? Quels sont vos hobby ?":partsArray[2];
+    //console.log("Avant New test2 "+document.getElementById('text').value);// prbl!!
+    document.getElementById('text').value=partsArray[2]=="undefined"?"Comment décririez-vous ? Quels sont vos hobby ?":partsArray[2];
 
-    console.log("Apres New test2 "+document.getElementById('text').innerHTML);// prbl!!
+      //console.log("Apres New test2 "+document.getElementById('text').value);// prbl!!
 
     document.getElementById('city').value=partsArray[5];
     if(partsArray[4]=="h"){
@@ -43,51 +45,52 @@ function get_user_info(id){
         document.getElementById('femme').checked=true;
      }
 
-     document.getElementById('h').checked=false;
-     document.getElementById('f').checked=false;
+     //document.getElementById('h').checked=false;
+     //document.getElementById('f').checked=false;
+
+     console.log("h "+document.getElementById('h').checked);
 
      var sexArray = (partsArray[7]+", ,").split(',');
+
+     console.log("h sexArray "+sexArray);
+
      if(sexArray[0]=="male" || sexArray[1]=="male"){
         document.getElementById('h').checked=true;
      }
      else{
      document.getElementById('h').checked=false;
      }
-     //document.getElementById('f').checked=(partsArray[7].indexOf("female")!=-1);
+     console.log("h after "+document.getElementById('h').checked);
 
+     console.log("f "+document.getElementById('f').checked);
      if(sexArray[0]=="female" || sexArray[1]=="female"){
         document.getElementById('f').checked=true;
      }
      else{
         document.getElementById('f').checked=false;
      }
+     console.log("f after "+document.getElementById('f').checked);
      if(partsArray[6]=="Single"){
-        document.getElementById('situation').value="célib";
+        document.getElementById('situation').value="celib";
      }
-     else if(partsArray[6]=="Maried"){
-        document.getElementById('situation').value="marié";
+     else if(partsArray[6]=="Married"){
+        document.getElementById('situation').value="marie";
      }
-     else{
-        document.getElementById('situation').value="compliqué";
+     else if(partsArray[6]=="It's complicated"){
+        document.getElementById('situation').value="complique";
      }
+     //console.log("Situation 2  "+partsArray[6]);
+
   });
 }
 function maj(id){
     var name= document.getElementById('nom').value;
     var date= document.getElementById('datepicker').value
 
-
-    console.log("Avant inner New test2 "+document.getElementById('text').innerHTML);
-    console.log("Avant New test2 "+document.getElementById('text').html);
-
-    var text= document.getElementById('text').innerHTML;
-
-    console.log("Apres inner New test2 "+document.getElementById('text').innerHTML);
-    console.log("Apres New test2 "+document.getElementById('text').html);
+    var text= document.getElementById('text').value;
 
     var city= document.getElementById('city').value;
-    //var bio = document.getElementById('text').value;
-    //var birth= document.getElementById().value;
+
     var gen="";
     if(document.getElementById('homme').checked){
         gen="h";
@@ -96,8 +99,9 @@ function maj(id){
         gen="f";
      }
 
-    //var loc = document.getElementById("").value;
     var rel = document.getElementById('situation').value;
+    console.log("situation biz = "+rel);
+
     var int="";
     if(document.getElementById('f').checked){
         int+="female";
@@ -107,12 +111,26 @@ function maj(id){
     else if(document.getElementById('h').checked)
         int+="male";
 
+    console.log("int = "+int);
+
+    rel="";
+    if(document.getElementById('situation').value=="marie"){
+      rel="Married";
+    }
+    else if(document.getElementById('situation').value=="celib"){
+      rel="Single";
+    }
+    else if (document.getElementById('situation').value=="complique"){
+      rel="It's comlicated";
+    }
+    //int+="female" // ??????????????????????
+
+    //if(document.getElementById('h').checked)
+      //      int+=",male";
 
     var send= "id="+id+"&name="+name+ "&date="+date+"&text="+text+"&city="+city+"&gen="+gen+"&rel="+rel+"&int="+int;
     console.log("ICICIC77 "+send);
-    //var res="update users set name_users ='"+name+"', bio_users='"+text+"',birthday_users="+date+" where id_fb_users="10207795536022976";//, gender_users=' ', location_users=' ', relation_users=' ', interested_users where id_users="+1;
     post_from_server("update_compte.php", true, send);
-
 }
 function send_likes(id){
   get_facebook_likes(function(data){

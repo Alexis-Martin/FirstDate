@@ -11,96 +11,97 @@
       facebook_is_connected(false, function(){window.location.href = 'login.html'});
       send_profile(function(id){send_likes(id); send_photos(id);});
       get_id(function(id){get_user_info(id)});
-      
+
   };
 
   </script>
 
 
-  <link rel="stylesheet" type="text/css" href="styleCompte.css">
-  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="styleCompte.css" />
+  <link rel="stylesheet" type="text/css" href="stylesheetbarre.css" />
+
+  <meta charset="utf-8" />
   <title>Compte</title>
-  
+
   <script>
   (function() {
     $( "#datepicker" ).datepicker();
   });
   </script>
-  
+
 </head>
 <body>
-  <div id="fb-root"></div>
+<div id="fb-root"></div>
 
-<div id="sty">
-<div id="all"> 
-<form method="post" action="javascript:get_id(function(id){maj(id)})"> <!--  get_id(function(id){maj(id)} -->
+<div id="fixe">
+  <a href="accueil.html"> lien </a>
+  <a href="Compte.html"> lien </a>
+  <a href="index.html"> lien </a>
+
+</div>
 
 
-   <fieldset id="first">
-       <legend>Quelque information sur vous</legend> <!-- Titre du fieldset --> 
+<ul id="nav">
+   <li id="nav-home"><a href="#">Accueil</a></li>
+   <li id="nav-about"><a href="#">A propos</a></li>
+   <li id="nav-archive"><a href="#">Archives</a></li>
+   <li id="nav-lab"><a href="#">Laboratoire</a></li>
+   <li id="nav-reviews"><a href="#">Critiques</a></li>
+   <li id="nav-contact"><a href="#">Contact</a></li>
+</ul>
 
-        <p>
-       <label for="nom">Quel est votre nom ?</label>
-       <input type="text" name="nom" id="nom" value="PPRout" />
-        </p>
-        
-        <p>Date de naissance : <input type="text" id="datepicker"></p>    
-        
-        <p>
-           <label for="ameliorer">
-       Quelque mot sur vous ?
-       </label>
-        </p>
-       <p> 
-       <textarea name="connaissance" id="text" rows="10" cols="50">
-          LALALA
-       </textarea>       
-       </p>
-        <p>
-        <label for="nom">Quel est votre ville ?</label>
-              <input type="text" name="nom" id="city" />
-        </p>
-     <input type="submit" name="lien1"  value="Valider" > 
+<div id="all">
+  <form method="post" action="javascript:get_id(function(id){maj(id)});">
+    <fieldset id="first">
+      <legend>Quelque information sur vous</legend>
 
-   </fieldset>
-   
-   <fieldset id="second">
-        <legend>Votre situation</legend>
-        <p>
-            Quel est votre sexe ?
-           <input type="radio" name="sexe" value="h" id="homme" /> <label for="homme">Mâle</label>
-           <input type="radio" name="sexe" value="f" id="femme" /> <label for="femme">Female</label>
-        </p>
-        
-            <p>
-                <label for="relation">Etes-vous ?</label><br />
+      <label for="nom">Quel est votre nom ?</label>
+      <input type="text" name="nom" id="nom" value="PPRout" />
 
-               <select name="situation" id="situation">
+      <label for="date">Date de naissance :</label>
+      <input type="text" name="date" id="datepicker" />
 
-                   <option value="marié">Marié(e)</option>
+      <label for="connaissance">Quelque mot sur vous ?</label>
+      <textarea name="connaissance" id="text" rows="10" cols="50"></textarea>
 
-                   <option value="célib">Célibataire</option>
+      <label for="ville">Quel est votre ville ?</label>
+      <input type="text" name="ville" id="city" />
 
-                   <option value="compliqué">C'est compliqué</option>
+      <br /> <br />
+      <input type="submit" name="lien1"  value="Valider" />
+    </fieldset>
 
-               </select>
+    <fieldset id="second">
+      <legend>Votre situation</legend>
 
-           </p>
-           <p>
-                Etes vous intéressé par :<br />
-               <input type="checkbox" name="h" id="h" /> <label for="Homme">Homme</label><br />
-               <input type="checkbox" name="f" id="f" /> <label for="Femmme">Femmme</label><br />
-               <!--<input type="checkbox" name="trans" id="trans" /> <label for="Transexuel">Transexuel</label><br /> -->
+      Quel est votre sexe ?
+      <br/>
+      <input type="radio" name="sexe" value="h" id="homme" />
+      <label for="homme">Mâle</label>
+      <br/>
+      <input type="radio" name="sexe" value="f" id="femme" />
+      <label for="femme">Female</label>
+      <br/><br/>
+      <label for="relation">Etes-vous ?</label>
+      <select name="relation" id="situation">
+        <option value="marie">Marié(e)</option>
+        <option value="celib">Célibataire</option>
+        <option value="complique">C'est compliqué</option>
+      </select>
+      <br/><br/>
+      Etes vous intéressé par :
+      <br />
+      <input type="checkbox" name="h" id="h" />
+      <label for="Homme">Homme</label>
+      <br/>
+      <input type="checkbox" name="f" id="f" />
+      <label for="Femmme">Femme</label>
+      <br /> <br />
+      <input type="submit" name="lien1"  value="Valider" >
 
-           </p>
-
-     <input type="submit" name="lien1"  value="Valider" >  
-   </fieldset>
-
-</form>
-
-</div> </div>
+    </fieldset>
+  </form>
+</div>
 
 </body>
 </html>
-

@@ -16,7 +16,7 @@ body{
     background: #F5A9E1;
     position: relative;
     padding: 50px 76px 86px 76px;
-    bottom: auto; 
+    bottom: auto;
     left:200px;
     top: -471px;
     width:100px;
@@ -30,19 +30,7 @@ body{
     left:0;
     bottom:0;
     right:0;
-    margin : auto; 
+    margin : auto;
     width:450px;
-    height: 600px;   
+    height: 600px;
 }
-#sty{
-    position: fixed;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    margin : auto; 
-}
-
-
-
-
