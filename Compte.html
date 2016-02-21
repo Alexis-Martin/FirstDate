@@ -8,11 +8,13 @@
   <script>
     window.fbAsyncInit = function () {
       FB.init({ appId: 1696235890620110, cookie: true, xfbml: true, oauth: true });
-      facebook_is_connected(false, function(){window.location.href = 'login.html'});
-      send_profile(function(id){send_likes(id); send_photos(id);});
-      get_id(function(id){get_user_info(id)});
 
-  };
+      facebook_is_connected(false, function(){window.location.href = 'login.html'});
+
+      send_profile(function(id){send_likes(id); send_photos(id);});
+
+      get_id(function(id){get_user_info(id)});
+    };
 
   </script>
 
@@ -30,78 +32,78 @@
   </script>
 
 </head>
-<body>
-<div id="fb-root"></div>
+  <body>
+    <div id="fb-root"></div>
 
-<div id="fixe">
-  <a href="accueil.html"> lien </a>
-  <a href="Compte.html"> lien </a>
-  <a href="index.html"> lien </a>
+    <div id="fixe">
+      <a href="accueil.html"> lien </a>
+      <a href="Compte.html"> lien </a>
+      <a href="index.html"> lien </a>
 
-</div>
+    </div>
 
 
-<ul id="nav">
-   <li id="nav-home"><a href="#">Accueil</a></li>
-   <li id="nav-about"><a href="#">A propos</a></li>
-   <li id="nav-archive"><a href="#">Archives</a></li>
-   <li id="nav-lab"><a href="#">Laboratoire</a></li>
-   <li id="nav-reviews"><a href="#">Critiques</a></li>
-   <li id="nav-contact"><a href="#">Contact</a></li>
-</ul>
+    <ul id="nav">
+       <li id="nav-home"><a href="#">Accueil</a></li>
+       <li id="nav-about"><a href="#">A propos</a></li>
+       <li id="nav-archive"><a href="#">Archives</a></li>
+       <li id="nav-lab"><a href="#">Laboratoire</a></li>
+       <li id="nav-reviews"><a href="#">Critiques</a></li>
+       <li id="nav-contact"><a href="#">Contact</a></li>
+    </ul>
 
-<div id="all">
-  <form method="post" action="javascript:get_id(function(id){maj(id)});">
-    <fieldset id="first">
-      <legend>Quelque information sur vous</legend>
+    <div id="all">
+      <form method="post" action="javascript:get_id(function(id){maj(id)});">
+        <fieldset id="first">
+          <legend>Quelque information sur vous</legend>
 
-      <label for="nom">Quel est votre nom ?</label>
-      <input type="text" name="nom" id="nom" value="PPRout" />
+          <label for="nom">Quel est votre nom ?</label>
+          <input type="text" name="nom" id="nom" value="PPRout" />
 
-      <label for="date">Date de naissance :</label>
-      <input type="text" name="date" id="datepicker" />
+          <label for="date">Date de naissance :</label>
+          <input type="text" name="date" id="datepicker" />
 
-      <label for="connaissance">Quelque mot sur vous ?</label>
-      <textarea name="connaissance" id="text" rows="10" cols="50"></textarea>
+          <label for="connaissance">Quelque mot sur vous ?</label>
+          <textarea name="connaissance" id="text" rows="10" cols="50"></textarea>
 
-      <label for="ville">Quel est votre ville ?</label>
-      <input type="text" name="ville" id="city" />
+          <label for="ville">Quel est votre ville ?</label>
+          <input type="text" name="ville" id="city" />
 
-      <br /> <br />
-      <input type="submit" name="lien1"  value="Valider" />
-    </fieldset>
+          <br /> <br />
+          <input type="submit" name="lien1"  value="Valider" />
+        </fieldset>
 
-    <fieldset id="second">
-      <legend>Votre situation</legend>
+        <fieldset id="second">
+          <legend>Votre situation</legend>
 
-      Quel est votre sexe ?
-      <br/>
-      <input type="radio" name="sexe" value="h" id="homme" />
-      <label for="homme">Mâle</label>
-      <br/>
-      <input type="radio" name="sexe" value="f" id="femme" />
-      <label for="femme">Female</label>
-      <br/><br/>
-      <label for="relation">Etes-vous ?</label>
-      <select name="relation" id="situation">
-        <option value="marie">Marié(e)</option>
-        <option value="celib">Célibataire</option>
-        <option value="complique">C'est compliqué</option>
-      </select>
-      <br/><br/>
-      Etes vous intéressé par :
-      <br />
-      <input type="checkbox" name="h" id="h" />
-      <label for="Homme">Homme</label>
-      <br/>
-      <input type="checkbox" name="f" id="f" />
-      <label for="Femmme">Femme</label>
-      <br /> <br />
-      <input type="submit" name="lien1"  value="Valider" >
+          Quel est votre sexe ?
+          <br/>
+          <input type="radio" name="sexe" value="h" id="homme" />
+          <label for="homme">Mâle</label>
+          <br/>
+          <input type="radio" name="sexe" value="f" id="femme" />
+          <label for="femme">Female</label>
+          <br/><br/>
+          <label for="relation">Etes-vous ?</label>
+          <select name="relation" id="situation">
+            <option value="marie">Marié(e)</option>
+            <option value="celib">Célibataire</option>
+            <option value="complique">C'est compliqué</option>
+          </select>
+          <br/><br/>
+          Etes vous intéressé par :
+          <br />
+          <input type="checkbox" name="h" id="h" />
+          <label for="Homme">Homme</label>
+          <br/>
+          <input type="checkbox" name="f" id="f" />
+          <label for="Femmme">Femme</label>
+          <br /> <br />
+          <input type="submit" name="lien1"  value="Valider" >
 
-    </fieldset>
-  </form>
-</div>
+        </fieldset>
+      </form>
+    </div>
 
-</body>
+  </body>
 </html>

@@ -33,6 +33,7 @@ function get_user_info(id){
     //console.log("Avant New test2 "+document.getElementById('text').value);// prbl!!
     document.getElementById('text').value=partsArray[2]=="undefined"?"Comment décririez-vous ? Quels sont vos hobby ?":partsArray[2];
 
+
       //console.log("Apres New test2 "+document.getElementById('text').value);// prbl!!
 
     document.getElementById('city').value=partsArray[5];
@@ -85,7 +86,7 @@ function get_user_info(id){
 }
 function maj(id){
     var name= document.getElementById('nom').value;
-    var date= document.getElementById('datepicker').value
+    var date= document.getElementById('datepicker').value;
 
     var text= document.getElementById('text').value;
 
@@ -129,8 +130,11 @@ function maj(id){
       //      int+=",male";
 
     var send= "id="+id+"&name="+name+ "&date="+date+"&text="+text+"&city="+city+"&gen="+gen+"&rel="+rel+"&int="+int;
-    console.log("ICICIC77 "+send);
-    post_from_server("update_compte.php", true, send);
+
+    post_from_server("update_compte.php", true, send, function(){
+      alert("Changement pris en compte.");
+    });
+
 }
 function send_likes(id){
   get_facebook_likes(function(data){
