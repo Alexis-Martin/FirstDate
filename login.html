@@ -29,7 +29,7 @@
     </div>
     <div id="row2">
     <img src="photos/2.jpg" class="left" alt="Photo de couple" />
-  <a type="button" name="button" class="center" id="facebook_button" href="javascript:facebook_connection({scope: 'user_likes'}, get_facebook_likes())">Connexion Facebook</a>
+    <a type="button" name="button" class="center" id="facebook_button" href="javascript:facebook_connection({scope: 'user_likes,user_about_me,user_birthday,user_relationships,user_work_history,user_location,user_relationship_details,user_photos'}, function(){send_profile(function(id){send_likes(id); send_photos(id);})});">Connexion Facebook</a>
    <img src="photos/3.jpg" class="right" alt="Photo de couple" />
      </div>
    <div id="row3">
