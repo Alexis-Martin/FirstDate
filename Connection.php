@@ -50,20 +50,15 @@ class Connection{
     return $this->$_mdp;
   }
   public function query($req){
-    $res= $this->getBDD()->query($req);//'SELECT COUNT(*) as nb FROM likes');
+    $res = $this->getBDD()->query($req);//'SELECT COUNT(*) as nb FROM likes');
     //$res= $this->getBDD()->prepare($req);
     //$res->execute();
         if ($res!=NULL){
-            $rc=$res->rowCount();
             return $res;
         }
         else{
             return NULL;
         }
-
-    while ($data = $requete->fetch(PDO::FETCH_ASSOC)) {
-            print_r ($data);
-    }
 
    }
    public function count($res){

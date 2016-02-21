@@ -6,13 +6,11 @@ function facebook_is_connected(ontrue, onfalse){
       if(ontrue){
         ontrue();
       }
-      return true;
     }
     else{
       if(onfalse){
         onfalse();
       }
-      return false;
     }
   });
 
@@ -43,7 +41,6 @@ function facebook_connection(scope, onsuccess, onerror){
       FB.login(function(response) {
         if (response.authResponse) {
             if(onsuccess){
-              alert(response.authResponse.accessToken);
               onsuccess();
             }
             return true;
@@ -61,31 +58,77 @@ function facebook_connection(scope, onsuccess, onerror){
   //alert('facebook_connection start');
 }
 
-function get_facebook_likes(){
+function get_facebook_likes(onsuccess, onerror){
   //alert('get_facebook_likes start');
-  FB.api('/me/likes',function(response){
-    if (response && !response.error) {
-      data = response.data;
-      for (var i = 0; i < data.length; i++) {
-          alert(data[i].name);
-        };
-      //return response.data;
-    }
-    else if(response && response.error){
-      alert('error ' + response.error.message);
-    }
 
+  facebook_is_connected(function(){
+    FB.api('/me/likes?fields=category,genre,name',function(response){
+      if (response && !response.error) {
+        data = response.data;
+        if(onsuccess){
+          onsuccess(data);
+        }
+      }
+      else if(response && response.error){
+        if(onerror){
+          onerror(response);
+        }
+      }
+    });
   });
-
   //alert('get_facebook_likes end');
 }
 
-function test(){
-  alert("it's works!");
+function get_facebook_profile(onsuccess, onerror){
+  //alert('get_faceboook_profile start');
+
+  facebook_is_connected(function(){
+    FB.api(
+    '/me/',
+    'GET',
+    {"fields":"bio,birthday,name,gender,interested_in,location,relationship_status,work"},
+    function(response) {
+      if (response && !response.error) {
+        data = response;
+        if(onsuccess){
+          onsuccess(data);
+        }
+      }
+      else if(response && response.error){
+        if(onerror){
+          onerror(response);
+        }
+      }
+    });
+  });
+  //alert('get_faceboook_profile end');
 }
 
+function get_facebook_photos(onsuccess, onerror){
+  //alert('get_faceboook_profile start');
 
-
+  facebook_is_connected(function(){
+    FB.api(
+    '/me/picture',
+    'GET',
+    {"type":"large"},
+    function(response) {
+      if (response && !response.error) {
+        console.log(encodeURIComponent(response.data.url));
+        data = response.data;
+        if(onsuccess){
+          onsuccess(data);
+        }
+      }
+      else if(response && response.error){
+        if(onerror){
+          onerror(response);
+        }
+      }
+    });
+  });
+  //alert('get_faceboook_profile end');
+}
 
 function createCookie(name,value,days) {
 	if (days) {
@@ -110,4 +153,55 @@ function readCookie(name) {
 
 function eraseCookie(name) {
 	createCookie(name,"",-1);
+}
+
+function getXHR(){
+  var xhr;
+  if (window.XMLHttpRequest){
+    xhr = new XMLHttpRequest();     //  Firefox, Safari, ...
+  }
+  else if (window.ActiveXObject){
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  return xhr;
+}
+
+function get_from_server(url, asynchrone, onsuccess){
+  var xhr = getXHR();
+
+  xhr.onreadystatechange  = function(){
+    if(xhr.readyState  == 4){
+      if(xhr.status  == 200){
+        if(onsuccess){
+          onsuccess(xhr);
+        }
+      }
+      else{
+        return false;
+      }
+    }
+  };
+  var asynchrone = asynchrone == 'undefined' ? false : asynchrone;
+  xhr.open("GET", url,  asynchrone);
+  xhr.send(null);
+}
+
+function post_from_server(url, asynchrone, parameters, onsuccess){
+  var xhr = getXHR();
+  xhr.onreadystatechange  = function(){
+    if(xhr.readyState  == 4){
+      if(xhr.status  == 200){
+        if(onsuccess){
+          onsuccess(xhr);
+        }
+      }
+      else{
+        return false;
+      }
+    }
+  };
+  var asynchrone = asynchrone ? asynchrone : false;
+  xhr.open("POST", url,  asynchrone);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send(parameters);
 }
