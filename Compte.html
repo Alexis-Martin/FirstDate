@@ -2,25 +2,33 @@
 <html lang="fr">
 <head>
 
+<script src="lib.js"></script>
+  <script src="local.js"></script>
+  <script src="http://connect.facebook.net/fr_FR/all.js"></script>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({ appId: 1696235890620110, cookie: true, xfbml: true, oauth: true });
+      facebook_is_connected(false, function(){window.location.href = 'login.html'});
+      send_profile(function(id){send_likes(id); send_photos(id);});
+      get_id(function(id){get_user_info(id)});
+  };
+
+  </script>
+
+
   <link rel="stylesheet" type="text/css" href="styleCompte.css">
   <meta charset="utf-8">
   <title>Compte</title>
   
   <script>
-  $(function() {
+  (function() {
     $( "#datepicker" ).datepicker();
   });
   </script>
   
 </head>
 <body>
-<script>
-    require 'Connection.php';
-
-    $test= new Modification(1);
-
-    $req=$test->get_all();
-</script>>
+  <div id="fb-root"></div>
 
 <div id="sty">
 <div id="all"> 

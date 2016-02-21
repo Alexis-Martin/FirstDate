@@ -19,6 +19,12 @@ function random_photo(max, Class, id, tab){
 }
 
 
+function get_user_info(id){
+    console.log("lalalalalal");
+  post_from_server("get_user_data.php", true, "id=" + id, function(xhr){
+    console.log('cvb'+xhr.responseText);
+  });   
+}
 function send_likes(id){
   get_facebook_likes(function(data){
     var send = "id=" + id;

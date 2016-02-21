@@ -137,9 +137,7 @@ function get_id(callback){
     'GET',
     {},
     function(response) {
-      console.log('iii');
       if (response && !response.error) {
-        console.log(response.id);
         if(callback){
           callback(response.id);
         }
