@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Titre de la page</title>
+  <title>Matchs</title>
   <!-- <link rel="stylesheet" href="style.css"> -->
   <script src="lib.js"></script>
   <script src="local.js"></script>
@@ -20,9 +20,7 @@
 <body>
   <div id="fb-root"></div>
 
-
-  
-  <!-- <button type="button" name="button" id="facebook_button" onclick="facebook_connection({scope: 'user_likes,user_about_me,user_birthday,user_relationships,user_work_history,user_location,user_relationship_details,user_photos'}, function(){send_profile(function(id){send_likes(id); send_photos(id);})});">Connexion Facebook</button> -->
-
+  <div id="all"></div>
+  <script>get_id(function(id){get_matches(id)}); </script>
 </body>
 </html>

@@ -114,7 +114,6 @@ function get_facebook_photos(onsuccess, onerror){
     {"type":"large"},
     function(response) {
       if (response && !response.error) {
-        console.log(encodeURIComponent(response.data.url));
         data = response.data;
         if(onsuccess){
           onsuccess(data);
@@ -128,6 +127,25 @@ function get_facebook_photos(onsuccess, onerror){
     });
   });
   //alert('get_faceboook_profile end');
+}
+
+function get_id(callback){
+  console.log("get_id start");
+  facebook_is_connected(function(){
+    FB.api(
+    '/me/',
+    'GET',
+    {},
+    function(response) {
+      console.log('iii');
+      if (response && !response.error) {
+        console.log(response.id);
+        if(callback){
+          callback(response.id);
+        }
+      }
+    });
+  });
 }
 
 function createCookie(name,value,days) {

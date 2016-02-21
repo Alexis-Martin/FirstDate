@@ -63,10 +63,13 @@ function send_photos(id){
   get_facebook_photos(function(data){
     if(data.url != 'undefined'){
       var send = "id=" + id + "&url=" + encodeURIComponent(data.url);
-      console.log(send);
-      post_from_server("add_photos.php", true, send, function(xhr){
-        console.log(xhr.responseText);
-      });
+      post_from_server("add_photos.php", true, send);
     }
+  });
+}
+
+function get_matches(id){
+  post_from_server("get_matches.php", true, "id=" + id, function(xhr){
+    console.log(xhr.responseText);
   });
 }
