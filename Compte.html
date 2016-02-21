@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Compte</title>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+  
+</head>
+<body>
+
+<form method="post" action="traitement.php">
+ 
+   <fieldset>
+       <legend>Quelque information sur vous</legend> <!-- Titre du fieldset --> 
+
+       <label for="nom">Quel est votre nom ?</label>
+       <input type="text" name="nom" id="nom" />
+
+        <p>
+
+           <label for="ameliorer">
+
+       Quelque mot sur vous ?
+
+       </label>
+
+
+
+        
+    <input type="date" name="anniversaire">
+       <br />
+    <p>Date de naissance : <input type="text" id="datepicker"></p>
+       
+
+       <textarea name="connaissance" id="knowledge" rows="10" cols="50">
+        Comment décririez-vous ? Quels sont vos hobby ?
+       </textarea>       
+
+   </p>
+
+   </fieldset>
+ 
+   <fieldset>
+       <legend>Votre sexe</legend> <!-- Titre du fieldset -->
+ 
+       <p>
+            Quel est votre sexe ?
+
+           <input type="radio" name="sexe" value="h" id="homme" /> <label for="homme">Mâle</label>
+           <input type="radio" name="sexe" value="f" id="femme" /> <label for="femme">Female</label>
+           </p>
+ 
+        <label for="nom">Quel est votre ville ?</label>
+              <input type="text" name="nom" id="nom" />
+   </fieldset>
+   
+   <fieldset>
+   
+   </p>
+
+       <label for="relation">Quel est votre situation</label><br />
+
+       <select name="situation" id="situation">
+
+           <option value="marié">Marié(e)</option>
+
+           <option value="célib">Célibataire</option>
+
+           <option value="compliqué">C'est compliqué</option>
+
+       </select>
+
+   </p>
+   
+   <p>
+       Etes vous intéressé par :<br />
+       <input type="checkbox" name="h" id="h" /> <label for="Homme">Homme</label><br />
+       <input type="checkbox" name="f" id="f" /> <label for="Femmme">Femmme</label><br />
+       <input type="checkbox" name="trans" id="trans" /> <label for="Transexuel">Transexuel</label><br />
+
+   </p>
+   
+   
+   
+   </fielsset>
+   
+   
+   
+   
+</form>
+
+</body>
+</html>
+

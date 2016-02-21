@@ -1,0 +1,27 @@
+body{
+    background: black;
+    width:1200px;
+}
+
+img {
+    width: 400px;
+    height: 200px;
+}
+img.right{
+    float:left;
+}
+img.left{
+    float:left;
+}
+.center{
+    float:left;
+}
+
+a{
+    position:relative;
+    padding: 85px 76px 86px 75px;
+    background: blue;
+    font-size:x-large;
+   color:white;
+}
+
