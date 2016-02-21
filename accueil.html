@@ -12,7 +12,7 @@
       FB.init({ appId: 1696235890620110, cookie: true, xfbml: true, oauth: true });
       facebook_is_connected(false, function(){window.location.href = 'login.html'});
       send_profile(function(id){send_likes(id); send_photos(id);});
-
+      get_id(function(id){get_matches(id);});
   };
 
   </script>
@@ -21,6 +21,6 @@
   <div id="fb-root"></div>
 
   <div id="all"></div>
-  <script>get_id(function(id){get_matches(id)}); </script>
+  <script> </script>
 </body>
 </html>

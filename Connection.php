@@ -64,7 +64,7 @@ public function count($res){
      }
  }
  public function match($id){ // checker que $id est bien dans la table
-     $req=$this->query("select id_users as nb from users where id_users!=".$id);
+     $req=$this->query("select id_fb_users as nb from users where id_fb_users!=".$id);
      $nbr= $this->count($req);
      //$ids=$req->fetchAll();
      //$tab[];
@@ -84,6 +84,6 @@ public function count($res){
     arsort($tab);
      return $tab;
  }
-} 
+}
 
 ?>
