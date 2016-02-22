@@ -1,8 +1,7 @@
 <?php
   require 'Connection.php';
-  require 'conf.php';
 
-  $base = new Connection($server, $base, $user, $mdp);
+  $base = new Connection();
 
 
   $id      = $base->getBDD()->quote($_POST['id']);

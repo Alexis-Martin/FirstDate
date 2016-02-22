@@ -1,10 +1,5 @@
 <?php
 
-$server = 'localhost';
-$base   = 'FirstDate_base';
-$user   = 'root';
-$mdp    = 'go93han';
-
 class Connection{
 
    private $bdd;
@@ -13,7 +8,10 @@ class Connection{
    private $_mdp;
    private $_user;
 
-public function __construct($h,$db,$user,$mdp){
+public function __construct($h = 'localhost',
+                            $db = 'FirstDate_base',
+                            $user = "Votre nom d'utilisateur mysql",
+                            $mdp = 'votre mot de passe mysql'){
  $this->_host = $h;
  $this->_dbname = $db;
  $this->_user = $user;

@@ -1,11 +1,10 @@
 <?php
 
   require "Connection.php";
-  require 'conf.php';
 
   $name = "%" . $_POST['name'] . "%";
 
-  $base = new Connection($server, $base, $user, $mdp);
+  $base = new Connection();
 
    $query = "SELECT id_fb_users, gender_users, photo_users, name_users, birthday_users, bio_users, location_users, interested_users, relation_users FROM users WHERE name_users LIKE " . $base->getBDD()->quote($name) ;
   $req2 = $base->query($query);

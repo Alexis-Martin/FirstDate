@@ -1,9 +1,8 @@
 <?php
   require 'Connection.php';
-  require 'conf.php';
   $keys = array_keys($_POST);
 
-  $base = new Connection($server, $base, $user, $mdp);
+  $base = new Connection();
   $id = 0;
   $birth = "";
   $gend = "";
@@ -53,7 +52,7 @@
       $exist = true;
       $suiv = true;
     }
-    echo $data['mv_bio_users']; 
+    echo $data['mv_bio_users'];
     if($data['mv_bio_users'] == 0){
       if($suiv == true){
         $upd .= ", ";

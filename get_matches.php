@@ -1,9 +1,8 @@
 <?php
 
   require "Connection.php";
-  require 'conf.php';
 
-  $base = new Connection($server, $base, $user, $mdp);
+  $base = new Connection();
   $req = $base->match($base->getBDD()->quote($_POST['id']));
   $rep = "";
   $keys =  array_keys($req);
