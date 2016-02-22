@@ -22,6 +22,7 @@ function random_photo(max, Class, id, tab){
 function get_user_info(id){
   post_from_server("get_user_data.php", true, "id=" + id, function(xhr){
     var aux=xhr.responseText;
+    console.log(aux);
     var partsArray = aux.split('<||>');
 
     document.getElementById('nom').value=partsArray[1];

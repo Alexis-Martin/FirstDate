@@ -7,7 +7,7 @@ class Modification{
       private $_conn;
 
   public function __construct($id){
-    $this->_conn=new Connection('localhost', 'FirstDate_base', 'root', 'go93han');
+    $this->_conn=new Connection('localhost', 'FirstDate_base', 'root', 'irahebbdlms');
     $this->_id=$this->_conn->getBDD()->quote($id);
     }
 
@@ -85,7 +85,7 @@ class Modification{
   }
 
   public function get_all(){
-    $res=$this->_conn->query("select * from users where id_fb_users=".$this->_id);
+    $res=$this->_conn->query("select id_fb_users, name_users, bio_users, birthday_users, gender_users, location_users, relation_users, interested_users from users where id_fb_users=".$this->_id);
 
 
             /*while ($data = $res->fetch(PDO::FETCH_NUM)) {
