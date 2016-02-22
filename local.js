@@ -20,8 +20,6 @@ function random_photo(max, Class, id, tab){
 
 
 function get_user_info(id){
-  console.log("eeee");
-
   post_from_server("get_user_data.php", true, "id=" + id, function(xhr){
     var aux=xhr.responseText;
     var partsArray = aux.split('<||>');
@@ -71,7 +69,6 @@ function get_user_info(id){
      else if(partsArray[6]=="It's complicated"){
         document.getElementById('situation').value="complique";
      }
-     //console.log("Situation 2  "+partsArray[6]);
 
   });
 }
@@ -119,7 +116,7 @@ function maj(id){
 
     var send= "id="+id+"&name="+name+ "&date="+date+"&text="+text+"&city="+city+"&gen="+gen+"&rel="+rel+"&int="+int;
 
-    post_from_server("update_compte.php", true, send, function(){
+    post_from_server("update_compte.php", true, send, function(xhr){
       alert("Changement pris en compte.");
     });
 
@@ -155,7 +152,7 @@ function send_profile(onsuccess){
     send = data.relationship_status != 'undefined' ? send + "&relation_users=" + data.relationship_status : send;
     send = data.interested_in != 'undefined' ? send + "&interested_users=" + (data.interested_in.length == 1 ? data.interested_in[0] : data.interested_in[0] + ',' + data.interested_in[1]) : send;
 
-    post_from_server("add_profile.php", true, send, function(){
+    post_from_server("add_profile.php", true, send, function(xhr){
       if(onsuccess){
         onsuccess(data.id);
       }
@@ -177,7 +174,6 @@ function get_matches(id){
   post_from_server("get_matches.php", true, "id=" + id, function(xhr){
 
     var rep = xhr.responseText;
-    console.log(rep);
     var row = rep.split("<!!>");
     complete_text(row);
   });
@@ -252,13 +248,11 @@ function complete_text(row){
 }
 
 function send_research(){
-  console.log(document.getElementById('search_name').value);
   var send = "name=" + document.getElementById('search_name').value;
   if(send != 'name=' && send != 'recherche'){
     post_from_server("research_name.php", true, send, function(xhr){
 
       var rep = xhr.responseText;
-      console.log(rep);
       var row = rep.split("<!!>");
       complete_text(row);
     });

@@ -16,8 +16,74 @@ class Modification{
     }
 
   public function setAll($name,$bio,$birth,$gen,$loc,$rel,$int){
-    $this->_conn->query("UPDATE users SET name_users = ".$name.", bio_users = ".$bio.",birthday_users = ".$birth.",gender_users = ".$gen.",location_users = ".$loc.",relation_users = ".$rel.",interested_users = ".$int." WHERE id_fb_users=".$this->_id);
+    $ask = "SELECT name_users, bio_users, birthday_users, gender_users, location_users, relation_users, interested_users FROM users WHERE id_fb_users=" . $this->_id;
+    $res=$this->_conn->query($ask);
+    $data = $res->fetch(PDO::FETCH_ASSOC);
+
+
+    $upd = "UPDATE users SET ";
+    $exist = false;
+    $suiv = false;
+    if('\'' . $data['name_users'] . '\'' != $name){
+      $upd .= "name_users=" . $name . ", mv_name_users=1";
+      $exist = true;
+      $suiv = true;
+    }
+    if('\'' . $data['bio_users'] . '\'' != $bio){
+      if($suiv == true){
+        $upd .= ", ";
+      }
+      $upd .= "bio_users=" . $bio . ", mv_bio_users=1";
+      $exist = true;
+      $suiv = true;
+    }
+    if('\'' . $data['birthday_users'] . '\'' != $birth){
+      if($suiv == true){
+        $upd .= ", ";
+      }
+      $upd .= "birthday_users=" . $birth . ", mv_birthday_users=1";
+      $exist = true;
+      $suiv = true;
+    }
+    if('\'' . $data['gender_users'] . '\'' != $gen){
+      if($suiv == true){
+        $upd .= ", ";
+      }
+      $upd .= "gender_users=" . $gen . ", mv_gender_users=1";
+      $exist = true;
+      $suiv = true;
+    }
+    if('\'' . $data['location_users'] . '\'' != $loc){
+      if($suiv == true){
+        $upd .= ", ";
+      }
+      $upd .= "location_users=" . $loc . ", mv_location_users=1";
+      $exist = true;
+      $suiv = true;
+    }
+    if('\'' . $data['relation_users'] . '\'' != $rel){
+      if($suiv == true){
+        $upd .= ", ";
+      }
+      $upd .= "relation_users=" . $rel . ", mv_relation_users=1";
+      $exist = true;
+      $suiv = true;
+    }
+    if('\'' . $data['interested_users'] . '\'' != $int){
+      if($suiv == true){
+        $upd .= ", ";
+      }
+      $upd .= "interested_users=" . $int . ", mv_interested_users=1";
+      $exist = true;
+    }
+    $upd .= " WHERE id_fb_users=".$this->_id;
+
+    if($exist == true){
+      echo $upd;
+      $this->_conn->query($upd);
+    }
   }
+
   public function get_all(){
     $res=$this->_conn->query("select * from users where id_fb_users=".$this->_id);
 
