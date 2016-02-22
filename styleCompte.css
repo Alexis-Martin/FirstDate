@@ -1,6 +1,6 @@
 body{
-    background-image:linear-gradient(pink, orange);
-    width:450px;
+    background-image:linear-gradient(grey, blue);
+    /*width:450px;*/
 }
 
 #first{
