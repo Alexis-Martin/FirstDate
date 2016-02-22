@@ -1,12 +1,17 @@
-body{
-    background-image:linear-gradient(grey, blue);
+html{
+  background: -webkit-linear-gradient(top,rgba(255,0,0,0),rgba(255,0,0,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(top,rgba(255,0,0,0),rgba(255,0,0,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(top,rgba(255,0,0,0),rgba(255,0,0,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to left, darkblue, blue);
     /*width:450px;*/
+    /*background-color: black;*/
+
 }
 
 #first{
     background: #CEECF5;
     position: relative;
-    left:-200px;
+    left:-230px;
     width:300px;
     height: 450px;
 
@@ -17,17 +22,18 @@ body{
     position: relative;
     padding: 50px 76px 86px 76px;
     bottom: auto;
-    left:200px;
+    left:230px;
     top: -471px;
     width:100px;
     height: 331px;
 
 
 }
+
 #all{
     position: absolute;
-    top:0;
-    left:50;
+    top:50px;
+    left:0;
     bottom:0;
     right:0;
     margin : auto;

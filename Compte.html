@@ -35,18 +35,12 @@
   <body>
     <div id="fb-root"></div>
 
-
-
-
-
     <ul id="nav">
        <li id="nav-home"><a href="accueil.html">Accueil</a></li>
        <li id="nav-about"><a href="Compte.html">Changer ses informations</a></li>
-       <li id="nav-archive"><a href="index.html">Index</a></li>
-
-
+      <li id="nav-archive"><a href="javascript:void(0);" onclick="javascript:FB.logout(function(response) {window.location.reload();});">Déconnexion</a></li>
     </ul>
-
+    <div id="sty">
     <div id="all">
       <form method="post" action="javascript:get_id(function(id){maj(id)});">
         <fieldset id="first">
@@ -54,13 +48,13 @@
 
           <label for="nom">Quel est votre nom ?</label>
           <input type="text" name="nom" id="nom" value="PPRout" />
-
+          <br/>
           <label for="date">Date de naissance :</label>
           <input type="text" name="date" id="datepicker" />
-
+          <br/><br/>
           <label for="connaissance">Quelque mot sur vous ?</label>
           <textarea name="connaissance" id="text" rows="10" cols="50"></textarea>
-
+          <br/><br/>
           <label for="ville">Quel est votre ville ?</label>
           <input type="text" name="ville" id="city" />
 
@@ -98,7 +92,7 @@
 
         </fieldset>
       </form>
-    </div>
+    </div></div>
 
   </body>
 </html>
