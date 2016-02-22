@@ -53,6 +53,7 @@
       $exist = true;
       $suiv = true;
     }
+    echo $data['mv_bio_users']; 
     if($data['mv_bio_users'] == 0){
       if($suiv == true){
         $upd .= ", ";
@@ -102,6 +103,7 @@
     }
     $upd .= " WHERE id_fb_users=" . $id;
     if($exist == true){
+      echo $upd;
       $base->query($upd);
     }
 

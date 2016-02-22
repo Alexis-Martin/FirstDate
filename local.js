@@ -154,6 +154,7 @@ function send_profile(onsuccess){
     send = data.interested_in != 'undefined' ? send + "&interested_users=" + (data.interested_in.length == 1 ? data.interested_in[0] : data.interested_in[0] + ',' + data.interested_in[1]) : send;
 
     post_from_server("add_profile.php", true, send, function(xhr){
+      console.log(xhr.responseText);
       if(onsuccess){
         onsuccess(data.id);
       }
